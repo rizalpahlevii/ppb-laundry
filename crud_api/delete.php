@@ -3,7 +3,7 @@ include 'connection.php';
 
 $id = $_POST['id'];
 
-$query = mysqli_query($con, "DELETE FROM data WHERE id = '$id' ");
+$query = mysqli_query($con, "DELETE FROM laundry WHERE id = '$id' ");
 
 if($query){
   $response['success'] = 'true';
@@ -14,4 +14,3 @@ if($query){
 }
 
 echo json_encode($response);
-?>

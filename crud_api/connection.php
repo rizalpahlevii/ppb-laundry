@@ -12,5 +12,3 @@ $con = mysqli_connect($host,$user,$pass, $db);
 // }else{
 //   echo "gagal";
 // }
-
- ?>

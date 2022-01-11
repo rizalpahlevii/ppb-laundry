@@ -2,7 +2,7 @@
 
 include 'connection.php';
 $id = $_POST['id'];
-$query = mysqli_query($con, "SELECT * FROM data WHERE id = '$id'");
+$query = mysqli_query($con, "SELECT * FROM laundry WHERE id = '$id'");
 $data = array();
 $qry_array = array();
 $i = 0;
@@ -13,19 +13,19 @@ while ($row = mysqli_fetch_array($query)) {
   $data['name'] = $row['name'];
   $data['phone'] = $row['phone'];
   $data['address'] = $row['address'];
+  $data['city'] = $row['city'];
   $qry_array[$i] = $data;
   $i++;
 }
 
-if($query){
+if ($query) {
   $response['success'] = 'true';
   $response['message'] = 'Data Loaded Successfully';
   $response['total'] = $total;
   $response['data'] = $qry_array;
-}else{
+} else {
   $response['success'] = 'false';
   $response['message'] = 'Data Loading Failed';
 }
 
 echo json_encode($response);
-?>
