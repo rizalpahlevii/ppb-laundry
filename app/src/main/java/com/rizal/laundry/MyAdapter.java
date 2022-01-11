@@ -94,6 +94,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                                 intent.putExtra("name",listItem.getName());
                                 intent.putExtra("address",listItem.getAddress());
                                 intent.putExtra("phone", listItem.getPhone());
+                                intent.putExtra("city", listItem.getCity());
                                 view.getContext().startActivity(intent);
                                 break;
                             case 1 :
@@ -104,6 +105,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                                 intent2.putExtra("name",listItem.getName());
                                 intent2.putExtra("address",listItem.getAddress());
                                 intent2.putExtra("phone", listItem.getPhone());
+                                intent2.putExtra("city", listItem.getCity());
                                 view.getContext().startActivity(intent2);
                                 break;
                             case 2 :

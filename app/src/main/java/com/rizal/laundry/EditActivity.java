@@ -27,8 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EditActivity extends AppCompatActivity {
-    EditText uid, name, address, phone;
-    String Uid, Name, Address, Phone, Id;
+    EditText uid, name, address, phone, city;
+    String Uid, Name, Address, Phone, Id, City;
     Button button;
     Boolean valid = true;
     ProgressDialog progressDialog;
@@ -42,6 +42,7 @@ public class EditActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.name);
         address = (EditText) findViewById(R.id.address);
         phone = (EditText) findViewById(R.id.phone);
+        city = (EditText) findViewById(R.id.city);
         progressDialog = new ProgressDialog(this);
         button = (Button) findViewById(R.id.button);
 
@@ -51,6 +52,7 @@ public class EditActivity extends AppCompatActivity {
         name.setText(getIntent().getStringExtra("name"));
         address.setText(getIntent().getStringExtra("address"));
         phone.setText(getIntent().getStringExtra("phone"));
+        city.setText(getIntent().getStringExtra("city"));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +61,7 @@ public class EditActivity extends AppCompatActivity {
                 Name = name.getText().toString();
                 Address = address.getText().toString();
                 Phone = phone.getText().toString();
+                City = phone.getText().toString();
 
                 if(TextUtils.isEmpty(Uid)){
                     uid.setError("UID Cannot be Empty");
@@ -83,6 +86,12 @@ public class EditActivity extends AppCompatActivity {
                                 valid = false;
                             }else {
                                 valid = true;
+                                if(TextUtils.isEmpty(City)){
+                                    phone.setError("Contact Number Cannot be Empty");
+                                    valid = false;
+                                }else {
+                                    valid = true;
+                                }
                             }
                         }
 
@@ -124,6 +133,7 @@ public class EditActivity extends AppCompatActivity {
                             params.put("uid", Uid);
                             params.put("phone", Phone);
                             params.put("address",Address);
+                            params.put("city",City);
                             return params;
                         }
                     };

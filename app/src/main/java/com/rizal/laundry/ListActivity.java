@@ -96,7 +96,8 @@ public class ListActivity extends AppCompatActivity {
                                 o.getString("uid"),
                                 o.getString("name"),
                                 o.getString("phone"),
-                                o.getString("address")
+                                o.getString("address"),
+                                o.getString("city")
 
                         );
                         listItems.add(item);

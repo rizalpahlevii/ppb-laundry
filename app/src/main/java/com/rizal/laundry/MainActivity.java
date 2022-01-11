@@ -24,8 +24,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText uid, name, address, phone;
-    String Uid, Name, Address, Phone;
+    EditText uid, name, address, phone,city;
+    String Uid, Name, Address, Phone, City;
     Button button;
     Boolean valid = true;
     ProgressDialog progressDialog;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.name);
         address = (EditText) findViewById(R.id.address);
         phone = (EditText) findViewById(R.id.phone);
+        city = (EditText) findViewById(R.id.city);
         progressDialog = new ProgressDialog(this);
         button = (Button) findViewById(R.id.button);
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 Name = name.getText().toString();
                 Address = address.getText().toString();
                 Phone = phone.getText().toString();
-
+                City = city.getText().toString();
                 if(TextUtils.isEmpty(Uid)){
                     uid.setError("UID Cannot be Empty");
                     valid = false;
@@ -71,7 +72,13 @@ public class MainActivity extends AppCompatActivity {
                                 phone.setError("Contact Number Cannot be Empty");
                                 valid = false;
                             }else {
-                                valid = true;
+                                if(TextUtils.isEmpty(City)){
+                                    phone.setError("City Cannot be Empty");
+                                    valid = false;
+                                }else{
+                                    valid = true;
+                                }
+
                             }
                         }
 
@@ -110,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                             params.put("uid", Uid);
                             params.put("phone", Phone);
                             params.put("address",Address);
+                            params.put("city",City);
                             return params;
                         }
                     };
